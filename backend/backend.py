@@ -7,13 +7,18 @@ app = FastAPI()
 
 
 
-k = model.Net(1, 10)
+testModel = model.Net(1, 10)
+testlayers = str(testModel.layers)
 
 #api = FastAPI()
 # FastAPI route to handle other API endpoints
 @app.get("/api")
 def read_root():
-    return {"Model": k}
+    return {"message": "api works!"}
+
+@app.get("/api/model")
+def read_root():
+    return {"message": testlayers}
 
 # Mount the built React app as a static directory
 app.mount("/", StaticFiles(directory="../frontend/build", html=True), name="static")
