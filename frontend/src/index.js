@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Cookie from './components/Cookie';
 import NeuralNetworkVisualization from './components/nn';
+import { Slider } from '@mui/material';
+import Sliders from './components/Slider';
 
 const myFirstElement = <h1>Hello React!</h1>
 
@@ -14,6 +16,7 @@ function Application(){
   return(
   <div>
     <NeuralNetworkVisualization/>
+    <Sliders />
     <Cookie />
   </div>
   )

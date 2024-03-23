@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import './Cookie.css'; // Importing the CSS file
 import * as d3 from 'd3';
+import Slider from '@mui/material/Slider'
 
 const NeuralNetworkVisualization = () => {
+    
+
     useEffect(() => {
         // Example data
         const neuralNetwork = {
