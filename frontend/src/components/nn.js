@@ -23,7 +23,7 @@ const NeuralNetworkVisualization = () => {
         const neuronRadius = 20;
         const layerSeparation = 100;
         const neuronSeparation = 100;
-        const verticalSeparation = 10; // Vertical separation constant
+        const verticalSeparation = 100; // Vertical separation constant
         const buffer = 100;
 
         // Draw neurons
