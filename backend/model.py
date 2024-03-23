@@ -43,20 +43,20 @@ def train(model, optimizer, criterion, batch_size, train_loader, val_loader, epo
                 print('Epoch: {}. Loss: {}. Accuracy: {}'.format(epoch, loss.item(), accuracy))
         
 
+if __name__ == "__main__":
+    model = Net(1,10)
 
-model = Net(1,10)
-
-train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
-train_data = list(train_data)[:4000]
-train_data, val_data = train_data[:3500], train_data[3500:]
-
-
-optimizer = torch.optim.SGD(model.parameters(), lr = 0.001)
-criterion = torch.nn.CrossEntropyLoss()
-batch_size = 16
-epochs = 50
-train_loader = DataLoader(dataset = train_data, batch_size = batch_size)
-val_loader = DataLoader(dataset = val_data, batch_size = batch_size)
+    train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
+    train_data = list(train_data)[:4000]
+    train_data, val_data = train_data[:3500], train_data[3500:]
 
 
-train(model, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
+    optimizer = torch.optim.SGD(model.parameters(), lr = 0.001)
+    criterion = torch.nn.CrossEntropyLoss()
+    batch_size = 16
+    epochs = 50
+    train_loader = DataLoader(dataset = train_data, batch_size = batch_size)
+    val_loader = DataLoader(dataset = val_data, batch_size = batch_size)
+
+
+    train(model, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
