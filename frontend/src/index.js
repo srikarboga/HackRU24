@@ -7,19 +7,20 @@ import Cookie from './components/Cookie';
 import NeuralNetworkVisualization from './components/nn';
 import { Slider } from '@mui/material';
 import Sliders from './components/Slider';
-import p from "./usermodel.js"
+import { fetchUserData } from './user.js';
 
 const myFirstElement = <h1>Hello React!</h1>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-p()
-  .then(userId => {
-    console.log('User ID:', userId);
-    // Perform any other initialization tasks here
+fetchUserData()
+  .then(user_id => {
+    console.log("haha", user_id);
   })
-  .catch(error => console.error('Error:', error));
+  .catch(error => {
+    // Handle error if needed
+  });
 
 function Application(){
   return(
