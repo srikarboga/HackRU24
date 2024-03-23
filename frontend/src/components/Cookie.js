@@ -9,10 +9,7 @@ function Cookie() {
         setEpochs(epochs + 1); // Updating the epochs state
     }
     
-    fetch('/api/model')
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+
 
     
     return (
