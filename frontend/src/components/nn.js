@@ -1,19 +1,43 @@
 import React, { useEffect } from 'react';
 import './Cookie.css'; // Importing the CSS file
 import * as d3 from 'd3';
-import Slider from '@mui/material/Slider'
+import { numhiddenlayers } from './Slider';
 
 const NeuralNetworkVisualization = () => {
     
 
     useEffect(() => {
         // Example data
-        const neuralNetwork = {
+        /*const neuralNetwork = {
             inputLayer: [0, 0, 0],
             hiddenLayer: [0.5, 0.6],
             hiddenLayer2: [0, 1],
             outputLayer: [0.7]
+            
         };
+        */
+
+        function neuralNetwork(n, min, max) {
+            const randomArray = [];
+            // Initialize input layer
+            randomArray.push([]);
+            // Input layer
+            for (let j = 0; j < n; j++) {
+                const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+                randomArray[0].push(randomInt);
+            }
+            // Hidden layers
+            for( let i = 1; i < 3; i++){
+                randomArray.push([]);
+                for (let j = 0; j < n; j++) {
+                    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+                    randomArray[i].push(randomInt);
+                }
+            }
+            // Output layer (assuming only one neuron in the output layer)
+            randomArray.push([Math.floor(Math.random() * (max - min + 1)) + min]);
+            return randomArray;
+        }
 
         const svg = d3.select("#neuralNetwork");
 
@@ -27,7 +51,7 @@ const NeuralNetworkVisualization = () => {
         const buffer = 100;
 
         // Draw neurons
-        const layers = [neuralNetwork.inputLayer, neuralNetwork.hiddenLayer, neuralNetwork.hiddenLayer2, neuralNetwork.outputLayer];
+        const layers = neuralNetwork(4, 1, 2);
         const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']; // Colors for each layer
         layers.forEach((layer, i) => {
             var counter = 0;
