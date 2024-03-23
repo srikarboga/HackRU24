@@ -9,7 +9,7 @@ function Cookie() {
         setEpochs(epochs + 1); // Updating the epochs state
     }
     
-    const response = fetch('/app/api')
+    const response = fetch('/api')
     console.log(response)
     console.log("hello")
     return (
