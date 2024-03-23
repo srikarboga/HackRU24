@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Cookie.css'; // Importing the CSS file
-import dogTreatImage from './img/dogtreat.jpeg'; // Importing the image
+import dogTreatImage from './img/dogtreat.png'; // Importing the image
 
 function Cookie() {
     const [epochs, setEpochs] = useState(0); // Using useState hook to maintain state
@@ -18,7 +18,7 @@ function Cookie() {
                 onClick={shoot}
                 className="cookie-image" // Applying class for styling
             />
-            <p className="cookie-paragraph">Epochs: {epochs}</p>
+            <p className="cookie-paragraph"> Epochs: {epochs}</p>
         </div>
     );
 }
