@@ -1,0 +1,19 @@
+/* Cookie.css */
+.cookie-container {
+    text-align: center;
+  }
+  
+  .cookie-image {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+  }
+  
+  .cookie-image:hover {
+    opacity: 0.8;
+  }
+  
+  .cookie-paragraph {
+    font-size: 20px;
+    color: #333;
+  }

@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Cookie from './components/Cookie';
+
+const myFirstElement = <h1>Hello React!</h1>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function Application(){
+  return(
+  <div>
+      <Cookie />
+  </div>
+  )
+}
+
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <Application />,
+  document.getElementById('App')
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
