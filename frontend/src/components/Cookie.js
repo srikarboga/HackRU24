@@ -9,9 +9,12 @@ function Cookie() {
         setEpochs(epochs + 1); // Updating the epochs state
     }
     
-    const response = fetch('/api')
-    console.log(response)
-    console.log("hello")
+    fetch('/api')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+    
     return (
         <div className="cookie-container">
             {/* Using the imported image and applying class names */}
