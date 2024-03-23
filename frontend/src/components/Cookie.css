@@ -4,25 +4,26 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 100vh;
-  }
-  
-  .cookie-image {
-    width: 200px;
-    height: 200px;
+    height: 10vh; /* 50% of the viewport height */
+    width: 100%; /* 100% of the viewport width */
+}
+
+.cookie-image {
+    width: 10%; /* 10% of the container's width */
+    height: auto; /* Maintain aspect ratio */
     cursor: pointer;
-  }
-  
-  .cookie-image:hover {
+}
+
+.cookie-image:hover {
     opacity: 0.8;
-  }
-  
-  .cookie-paragraph {
+}
+
+.cookie-paragraph {
     position: absolute;
-    bottom: calc(15% + 10px); /* Adjust the spacing */
+    bottom: 20vh; /* Position above the image */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 20px;
+    font-size: 1.5vw; /* 1.5% of the viewport width */
     color: #c15b01;
     text-align: center;
-  }
+}

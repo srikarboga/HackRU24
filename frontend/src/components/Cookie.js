@@ -8,7 +8,10 @@ function Cookie() {
     const shoot = () => {
         setEpochs(epochs + 1); // Updating the epochs state
     }
-  
+    
+    const response = fetch('/app/api')
+    console.log(response)
+    console.log("hello")
     return (
         <div className="cookie-container">
             {/* Using the imported image and applying class names */}

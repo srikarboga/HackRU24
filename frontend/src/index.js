@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Cookie from './components/Cookie';
+import NeuralNetworkVisualization from './components/nn';
 
 const myFirstElement = <h1>Hello React!</h1>
 
@@ -12,15 +13,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 function Application(){
   return(
   <div>
-      <Cookie />
+    <NeuralNetworkVisualization/>
+    <Cookie />
   </div>
   )
 }
 
 
 root.render(
-  <Application />,
-  document.getElementById('App')
+  <Application />
 )
 
 // If you want to start measuring performance in your app, pass a function
