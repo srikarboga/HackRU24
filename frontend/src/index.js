@@ -8,6 +8,7 @@ import NeuralNetworkVisualization from './components/nn';
 import { Slider } from '@mui/material';
 import Sliders from './components/Slider';
 import { fetchUserData } from './user.js';
+import { useState } from 'react';
 
 const myFirstElement = <h1>Hello React!</h1>
 
@@ -26,7 +27,6 @@ function Application(){
   return(
   <div>
     <NeuralNetworkVisualization/>
-    <Sliders />
     <Cookie />
   </div>
   )
