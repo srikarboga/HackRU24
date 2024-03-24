@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './nn.css'; // Importing the CSS file
 import * as d3 from 'd3';
 import Sliders from './Slider';
-import Sliders2 from './Slider2';
 import dogTreatImage from './img/dogtreat.png';
 import Cookie from './Cookie';
 
@@ -32,6 +31,7 @@ function NeuralNetworkVisualization(){
         setSliderValue2(newValue2);
     };
 
+    
     function neuralNetwork(n, min, max) {
         const randomArray = [];
         // Initialize input layer
@@ -96,7 +96,7 @@ function NeuralNetworkVisualization(){
                 });
             });
         });
-    }, [sliderValue]);
+    }, [sliderValue, sliderValue2]);
         
 
     
@@ -116,8 +116,8 @@ function NeuralNetworkVisualization(){
                 />
             </div>
             <div className='row2'>
-                <Sliders onValueChange={handleValueChange}/>
-                <Sliders2 onValueChange={handleValueChange2}/>
+                <Sliders initialValue={sliderValue} onValueChange={handleValueChange}/>
+                <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2}/>
                 <Cookie />
             </div>
         </div>

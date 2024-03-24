@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 
-const Sliders = ({ onValueChange }) => {
-  const [value, setValue] = useState(1);
+const Sliders = ({initialValue, onValueChange }) => {
+  const [value, setValue] = useState(initialValue);
 
   const handleSliderChange = (event) => {
     const newValue = event.target.value;
