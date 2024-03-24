@@ -33,7 +33,8 @@ body {
 }
 
 neuralNetwork {
-    margin-bottom: 20px;
+    display: flex;
+    align-items: left;
 }
 
 .place-image {

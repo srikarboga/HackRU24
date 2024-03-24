@@ -16,6 +16,7 @@ function Cookie() {
                 alt="Dog Treat"
                 onClick={shoot}
                 className="cookie-image" // Applying class for styling
+                height = "50 px"
             />
             <p className="h1"> Epochs: {epochs}</p>
         </div>

@@ -21,9 +21,9 @@ function NeuralNetworkVisualization(){
 
     const [sliderValue, setSliderValue] = useState(1);
     const [min_val, setminval] = useState(1);
-    const [max_val, setmaxval] = useState(10);
+    const [max_val, setmaxval] = useState(5);
     const [min_val2, setminval2] = useState(1);
-    const [max_val2, setmaxval2] = useState(5);
+    const [max_val2, setmaxval2] = useState(50);
 
     const handleValueChange = (newValue) => {
         setSliderValue(newValue);
@@ -67,8 +67,8 @@ function NeuralNetworkVisualization(){
         
         const neuronRadius = 20/sliderValue2;
         const layerSeparation = 100;
-        const neuronSeparation = 100;
-        const verticalSeparation = 100 / sliderValue2; // Vertical separation constant
+        const neuronSeparation = 10;
+        const verticalSeparation = 600 / sliderValue2; // Vertical separation constant
         const buffer = 100;
 
         // Draw neurons
@@ -107,12 +107,12 @@ function NeuralNetworkVisualization(){
     return (
         <div className='container'>
             <div className='row1'>
-                <svg id="neuralNetwork" width="800" height="700"></svg>
-                <img
-                    src={dogTreatImage}
-                    alt="Dog Treat"
-                    className="place-image" // Applying class for styling
-                />
+                <div className='container'>
+                    <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
+                    <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
+                </div>
+                
+                <svg id="neuralNetwork" width="800" height="800"></svg>
                 <img
                     src={dogTreatImage}
                     alt="Dog Treat"
@@ -120,8 +120,7 @@ function NeuralNetworkVisualization(){
                 />
             </div>
             <div className='row2'>
-                <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
-                <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
+                
                 <Cookie />
             </div>
         </div>
