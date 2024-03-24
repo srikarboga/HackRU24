@@ -142,19 +142,19 @@ function NeuralNetworkVisualization(){
     
     return (
         <div className='container'>
-            <div><header>Restless Learning</header></div>
+            <div ><header className = "mainTitle">Restless Learning</header></div>
             
             <div className='row1'>
                 <div className='row3'>
-                    <p>The first layer has 784 neurons, because we <br/>have 784 pixels in our image. But here we've <br />displayed fewer input neurons for visualization<br /> purposes.</p>
+                    <p>The first layer has 784 neurons, because we have 784 pixels in our image. But here we've displayed fewer input neurons for visualization purposes.</p>
                     <h1>No. Hidden Layers: {sliderValue-1}</h1>
                     <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
                     <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
                     <h1>No. Nodes per layer: {sliderValue2}</h1>
                 </div>
                 
-                <svg id="neuralNetwork" width="800" height="800"></svg>
-                <div>
+                <svg id="neuralNetwork" width="800" height="600"></svg>
+                <div className= "Accuracy">
                     <h1 className="text">Accuracy: {acc}%</h1>
                     <img
                         src={dogTreatImage}
@@ -166,10 +166,7 @@ function NeuralNetworkVisualization(){
                 </div>
                 
             </div>
-            <div className='row2'>
-                
-                <Cookie userData={userData} setUserData={setUserData} setAcc={setAcc} setLoss={setLoss} setPredicted={setPredicted}/>
-            </div>
+            <Cookie userData={userData} setUserData={setUserData} setAcc={setAcc} setLoss={setLoss} setPredicted={setPredicted}/>
         </div>
     );
 };

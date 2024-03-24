@@ -54,21 +54,23 @@ function Cookie(props) {
     
     return (
         
-        <div className="cookie-container">
+        <div className = "bottomRow">
             {/* Using the imported image and applying class names */}
-            <div style={{ maxWidth: '950px' }}>
-                <p>{text}</p>
+            <p className='hint'>{text}</p>
+            <div className="cookie-image">
+                <img
+                    src={button}
+                    alt="Dog Treat"
+                    onClick={shoot}
+                     // Applying class for styling
+                    height = "150 px"
+                    
+                />
+                <h1 className='train'>CLICK TO TRAIN</h1>
             </div>
-            <img
-                src={button}
-                alt="Dog Treat"
-                onClick={shoot}
-                className="cookie-image" // Applying class for styling
-                height = "100 px"
-                
-            />
-            <h1> Epochs: {epochs}</h1>
-        </div>
+            <h1 className='epoch'> Epochs: {epochs}</h1>
+            
+        </div> 
     );
 }
 
