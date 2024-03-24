@@ -135,12 +135,7 @@ button:active {
     padding-top: 5px;
 }
 
-.epoch{
-    margin: 0;
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-}
+
 /* Additional styles for educational content */
 h1 {
     font-size: 24px;
@@ -149,12 +144,22 @@ h1 {
     align-items: center;
     justify-content: center;
 }
+
+.epoch{
+    font-size: 20;
+    margin: 0;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
 .hint{
-    max-width: 450px;
+    max-width: 540px;
     align-self: left;
     position:fixed;
-    left:10px;
-    bottom:10px;
+    left:30px;
+    bottom: 6px;
+    color: #01161E;
+    /* font-weight: 100px; */
 }
 p {
     font-size: 16px;
