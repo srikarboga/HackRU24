@@ -29,4 +29,4 @@ After each press of the button at the center the model, the model calls the back
 
 There are also some helpful tips to build intuition for how neural networks learn that show up on the bottom left side of the screen after a certain number of epochs.  
 
-The goal of this is to let students build intuition for how neural networks work.  
+The goal of this is to let students build intuition for how neural networks work. 
