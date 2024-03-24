@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
+
 const Sliders = ({ onValueChange }) => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   const handleSliderChange = (event) => {
     const newValue = event.target.value;
@@ -10,11 +11,11 @@ const Sliders = ({ onValueChange }) => {
   };
 
   return (
-    <div>
+    <div className='slider-container'>
       <input
         type="range"
-        min="0"
-        max="4"
+        min="1"
+        max="6"
         value={value}
         onChange={handleSliderChange}
       />
