@@ -64,7 +64,7 @@ async def new_model():
     im = cm_hot(im)
     im = np.uint8(im * 255)
     im = Image.fromarray(im)
-    im = im.resize((280,280), resample = Image.Resampling.NEAREST)
+    im = im.resize((560,560), resample = Image.Resampling.NEAREST)
     im.save("../frontend/src/components/img/dogtreat.png")
     # figure = plt.figure(figsize=(8, 8))
     # plt.imshow(image.squeeze())
@@ -73,6 +73,10 @@ async def new_model():
 
     # Send the user_id to the client-side JavaScript
     return {"user_id": user_id, "model":testlayers,}
+
+@app.get("/api/train")
+async def next_iter():
+    pass
 
 # Mount the built React app as a static directory
 #app.mount("/", StaticFiles(directory="../frontend/build", html=True), name="static")
