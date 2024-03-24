@@ -1,6 +1,7 @@
 export async function fetchUserData(slidervalue, slidervalue2) {
   try {
-    const response = await fetch("http://localhost:8000/api/newmodel?layers"+ slidervalue + "&size" + slidervalue2); //CHANGE THIS WHEN DEPLOYING: TO /api/newmodel
+    const response = await fetch("http://localhost:8000/api/newmodel/?layers="+ (slidervalue-1)+ "&size=" + slidervalue2); //CHANGE THIS WHEN DEPLOYING: TO /api/newmodel
+    //console.log("va;ues:", slidervalue, "hasdfhasf",  slidervalue2);
     const data = await response.json();
     //console.log(data)
     return data;

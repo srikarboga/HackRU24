@@ -62,9 +62,10 @@ im.save("../frontend/src/components/img/dogtreat.png")
 def read_root():
     return {"message": "api works!"}
 
-@app.get("/api/newmodel")
+@app.get("/api/newmodel/")
 async def new_model(layers: int = 1, size: int = 10):
     user_id = str(uuid4())
+    #print("LAYERS: ", layers, size)
     testModel = model.Net(layers, size)
     models[user_id] = testModel
     optimizer = torch.optim.SGD(testModel.parameters(), lr = 0.001)

@@ -94,6 +94,7 @@ body {
     position: relative;
     right:0;
     top:0;
+    background-color: #588157;
 }
 
 button {
@@ -128,11 +129,14 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #588157;
 }
 
 .train{
     margin: 0;
     padding-top: 5px;
+    background-color: #588157;
+    color: black;
 }
 
 

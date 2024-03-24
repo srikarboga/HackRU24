@@ -46,7 +46,7 @@ def train(model, optimizer, criterion, batch_size, train_loader, val_loader, epo
         
 
 if __name__ == "__main__":
-    model = Net(1,10)
+    model = Net(1,2)
     train_data = datasets.MNIST('./data', train=True, download=False, transform=transforms.ToTensor())
     train_data = list(train_data)[:4000]
     train_data, val_data = train_data[:3500], train_data[3500:]
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     optimizer = torch.optim.SGD(model.parameters(), lr = 0.001)
     criterion = torch.nn.CrossEntropyLoss()
     batch_size = 16
-    epochs = 50
+    epochs = 100
     train_loader = DataLoader(dataset = train_data, batch_size = batch_size, shuffle = True)
     val_loader = DataLoader(dataset = val_data, batch_size = batch_size, shuffle = True)
 
