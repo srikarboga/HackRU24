@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 
-const Sliders2 = ({ onValueChange2 }) => {
+const Sliders2 = ({ onValueChange }) => {
   const [value2, setValue2] = useState(1);
 
   const handleSliderChange2 = (event) => {
     const newValue2 = event.target.value;
     setValue2(newValue2);
-    onValueChange2(newValue2); // Call the callback function with the new value
+    onValueChange(newValue2); // Call the callback function with the new value
   };
 
   return (
@@ -23,4 +23,4 @@ const Sliders2 = ({ onValueChange2 }) => {
   );
 };
 
-export default Sliders;
+export default Sliders2;
