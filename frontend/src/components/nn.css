@@ -96,6 +96,20 @@ body {
     top:0;
 }
 
+button {
+    background: #EFF6E0;
+    cursor: pointer;
+}
+
+button:active {
+    background: #EFF6E0;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+     outline: none;
+     border-radius: 10px;
+}
+
 .bottomRow{
     display: flex;
     flex-direction: row;

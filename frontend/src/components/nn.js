@@ -91,53 +91,83 @@ function NeuralNetworkVisualization(){
         // Clear previous SVG elements
         svg.selectAll("*").remove();
 
-        
+        const height = 600;
+        const width = 760;
+        const offset = 20;
+        const layers = neuralNetwork(sliderValue2, 1, 2);
         const neuronRadius = 100/(sliderValue2*2.5);
-        const layerSeparation = 100;
-        const neuronSeparation = 50;
-        const verticalSeparation = 600 / sliderValue2; // Vertical separation constant
-        const buffer = 100;
+        var layerSeparation = width/(layers.length+1) + offset;
+        //const neuronSeparation = 20;
+        var verticalSeparation = height / sliderValue2; // Vertical separation constant
+        const buffer = 30;
+
+        
+        
+        //.style("fill", colors[1]) // Apply color for each layer
+
+
 
         // Draw neurons
-        const layers = neuralNetwork(sliderValue2, 1, 2);
+        
         const colors = ['#01161E', '#124559', '#598392', '#AEC3B0']; // Colors for each layer
         layers.slice(0, -1).forEach((layer, i) => {
+            //layerSeparation = height/layer.length;
+            var verticalSeparation = height / layer.length;
             layer.forEach((neuron, j) => {
                 // Append circles for neurons in all layers except the output layer
                 svg.append("circle")
                     .attr("class", `neuron layer-${i}`) // Add class for each layer
-                    .attr("cx", (i * layerSeparation) + neuronSeparation)
-                    .attr("cy", (j * verticalSeparation) + verticalSeparation + buffer)
+                    .attr("cx", (i * layerSeparation) + offset)//+ neuronSeparation)
+                    .attr("cy", ((j) * verticalSeparation) + offset)
                     .attr("r", neuronRadius)
                     .style("fill", colors[i % 4]); // Apply color for each layer
             });
         });
+
         
         // Append circles for neurons in the output layer
         const outputLayer = layers.slice(-1)[0]; // Get the last layer
         outputLayer.forEach((neuron, j) => {
             svg.append("circle")
                 .attr("class", `neuron output-layer`) // Add class for the output layer
-                .attr("cx", ((layers.length - 1) * layerSeparation) + neuronSeparation) // Adjust for the last layer
-                .attr("cy", (j * verticalSeparation) + verticalSeparation + buffer)
-                .attr("r", 40) // Larger radius for output layer neurons
+                .attr("cx", ((layers.length - 1) * layerSeparation) + offset)// + neuronSeparation) // Adjust for the last layer
+                .attr("cy", (height/2) + offset)
+                .attr("r", 30) // Larger radius for output layer neurons
                 .style("fill", "green"); // Apply color for the output layer
         });
 
         // Draw connections
-        layers.slice(0, -1).forEach((layer, i) => {
+        layers.slice(0, -2).forEach((layer, i) => {
             layer.forEach((neuron, j) => {
+                var prevlayer = height / layer.length
                 layers[i + 1].forEach((nextNeuron, k) => {
+                    var currlayer = height / layers[i+1].length
                     svg.append("line")
                         .attr("class", `connection layer-${i}`) // Add class for each layer
-                        .attr("x1", i * layerSeparation + neuronSeparation)
-                        .attr("y1", j * verticalSeparation + verticalSeparation + buffer)
-                        .attr("x2", (i + 1) * layerSeparation + neuronSeparation)
-                        .attr("y2", k * verticalSeparation + verticalSeparation + buffer)
+                        .attr("x1", (i * layerSeparation) + offset)
+                        .attr("y1", (j*prevlayer) + offset)
+                        .attr("x2", (i + 1) * layerSeparation + offset)// + neuronSeparation)
+                        .attr("y2", (k * currlayer) + offset)
                         .style("stroke", "#588157"); // Make lines red colored
                 });
             });
         });
+
+
+        layers[layers.length-2].forEach((neuron, j) => {
+            var prevlayer = height / layers[layers.length-2].length
+            var currlayer = height / layers[layers.length-1].length
+            svg.append("line")
+                .attr("class", `connection layer-${layers.length-1}`) // Add class for each layer
+                .attr("x1", ((layers.length-2) * layerSeparation) + offset)
+                .attr("y1", (j*prevlayer) + offset)
+                .attr("x2", ((layers.length-1)) * layerSeparation + offset)// + neuronSeparation)
+                .attr("y2", (height/2) + offset)
+                .style("stroke", "#588157"); // Make lines red colored
+        }
+        )
+
+        //console.log(layers[layers.length-2])
     }, [sliderValue, sliderValue2]);
     
     return (

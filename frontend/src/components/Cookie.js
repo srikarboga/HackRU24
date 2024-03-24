@@ -58,14 +58,17 @@ function Cookie(props) {
             {/* Using the imported image and applying class names */}
             <p className='hint'>{text}</p>
             <div className="cookie-image">
-                <img
-                    src={button}
-                    alt="Dog Treat"
-                    onClick={shoot}
-                     // Applying class for styling
-                    height = "150 px"
+                <button>
+                    <img
+                        src={button}
+                        alt="Dog Treat"
+                        onClick={shoot}
+                        // Applying class for styling
+                        height = "150 px"
                     
-                />
+                    />
+                </button>
+                
                 <h1 className='train'>CLICK TO TRAIN</h1>
             </div>
             <h1 className='epoch'> Epochs: {epochs}</h1>
