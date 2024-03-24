@@ -20,6 +20,10 @@ function NeuralNetworkVisualization(){
         */
 
     const [sliderValue, setSliderValue] = useState(1);
+    const [min_val, setminval] = useState(1);
+    const [max_val, setmaxval] = useState(10);
+    const [min_val2, setminval2] = useState(1);
+    const [max_val2, setmaxval2] = useState(5);
 
     const handleValueChange = (newValue) => {
         setSliderValue(newValue);
@@ -116,8 +120,8 @@ function NeuralNetworkVisualization(){
                 />
             </div>
             <div className='row2'>
-                <Sliders initialValue={sliderValue} onValueChange={handleValueChange}/>
-                <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2}/>
+                <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
+                <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
                 <Cookie />
             </div>
         </div>
