@@ -152,8 +152,9 @@ h1 {
     right: 10px;
     bottom: 10px;
 }
+
 .hint{
-    max-width: 540px;
+    max-width: 440px;
     align-self: left;
     position:fixed;
     left:30px;

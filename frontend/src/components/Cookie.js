@@ -56,7 +56,7 @@ function Cookie(props) {
         
         <div className = "bottomRow">
             {/* Using the imported image and applying class names */}
-            <p className='hint' style={{fontSize: 20 + "px"}}>{text}</p>
+            <p className='hint' style={{fontSize: 15 + "px"}}>{text}</p>
             <div className="cookie-image">
                 <button>
                     <img
