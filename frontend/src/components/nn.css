@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif; /* Change font family to Roboto */
 }
 
 .container {
@@ -85,6 +85,8 @@ h1 {
 p {
     font-size: 16px;
     margin-bottom: 20px;
+    align-items: center;
+    color: #588157;
 }
 
 header {
@@ -94,5 +96,4 @@ header {
     align-items: center;
     justify-content: center;
 }
-
 
