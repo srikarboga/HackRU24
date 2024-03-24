@@ -19,7 +19,7 @@ function NeuralNetworkVisualization(){
         };
         */
 
-    const [sliderValue, setSliderValue] = useState(1);
+    const [sliderValue, setSliderValue] = useState(2);
     const [min_val, setminval] = useState(1);
     const [max_val, setmaxval] = useState(5);
     const [min_val2, setminval2] = useState(1);
@@ -29,7 +29,7 @@ function NeuralNetworkVisualization(){
         setSliderValue(newValue);
     };
 
-    const [sliderValue2, setSliderValue2] = useState(1);
+    const [sliderValue2, setSliderValue2] = useState(5);
 
     const handleValueChange2 = (newValue2) => {
         setSliderValue2(newValue2);
@@ -93,8 +93,8 @@ function NeuralNetworkVisualization(){
                 .attr("class", `neuron output-layer`) // Add class for the output layer
                 .attr("cx", ((layers.length - 1) * layerSeparation) + neuronSeparation) // Adjust for the last layer
                 .attr("cy", (j * verticalSeparation) + verticalSeparation + buffer)
-                .attr("r", 50) // Larger radius for output layer neurons
-                .style("fill", colors[(layers.length - 1) % 4]); // Apply color for the output layer
+                .attr("r", 40) // Larger radius for output layer neurons
+                .style("fill", "green"); // Apply color for the output layer
         });
 
         // Draw connections
@@ -113,23 +113,7 @@ function NeuralNetworkVisualization(){
         });
     }, [sliderValue, sliderValue2]);
     
-    /*hints = ["Epochs and Learning: An 'epoch' in neural network training is like a round of practice. Imagine you're learning to ride a bike. Each time you practice riding around the block, that's one epoch. Neural networks learn similarly – during each epoch, they look at all the training examples (like different bike rides) to get better at their task.",
-                "Hidden Layers, Hidden Magic: Neural networks have hidden layers, which are like secret agents helping them solve problems. Just as spies gather information covertly, hidden layers process data in ways that aren't immediately visible. By passing information through these hidden layers, neural networks can uncover complex patterns and relationships in data.",
-                "Backpropagation and Course Correction: Backpropagation is like a correction tool for neural networks. Imagine drawing a picture and your friend points out mistakes you made. Backpropagation does something similar – it helps neural networks learn from their mistakes by adjusting the way they interpret data. This way, they can gradually improve their performance over time.",
-                "Overfitting, the Villain of Generalization: Overfitting is a sneaky villain in the world of neural networks. It's like memorizing answers without understanding the questions. When a neural network overfits, it becomes too focused on the training data and can't generalize well to new, unseen examples. Researchers work on techniques to prevent overfitting and ensure neural networks can handle new challenges.",
-                "Transfer Learning, Sharing Knowledge: Transfer learning is like borrowing knowledge from one task to help with another. Imagine you're learning to cook pasta, and you realize the skills you've learned from making pizza also apply – that's transfer learning! Similarly, neural networks can use knowledge gained from one task to help solve another, saving time and resources in the learning process."]
-    if (epochs==10){
-        text = hints[0]
-    } else if (epochs == 25) {
-        text = hints[1]
-    } else if (epochs == 50) {
-        text = hints[2]
-    } else if (epochs == 100) {
-        text = hints[3]
-    } else if (epochs == 200) {
-        text = hints[4]
-        <p>You've reached a milestone! Here's your hint: {hint[i]}</p>
-    }*/
+    
     
     return (
         <div className='container'>
