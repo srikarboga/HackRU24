@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Cookie from './components/Cookie';
-import NeuralNetworkVisualization from './components/nn';
-import { Slider } from '@mui/material';
-import Sliders from './components/Slider';
-import { fetchUserData } from './user.js';
-import { useState } from 'react';
 
-const myFirstElement = <h1>Hello React!</h1>
+import NeuralNetworkVisualization from './components/nn';
+import { fetchUserData } from './user.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,9 +19,8 @@ fetchUserData()
 
 function Application(){
   return(
-  <div>
+  <div class="wrapper">
     <NeuralNetworkVisualization/>
-    <Cookie />
   </div>
   )
 }

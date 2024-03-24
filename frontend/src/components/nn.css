@@ -1,7 +1,74 @@
-.svg-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 10px); /* Adjust as needed */
-    margin-top: 100px; /* Move down by 10 pixels */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #EFF6E0; /* Lightest color */
+    color: #01161E; /* Darkest color */
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #EFF6E0; /* Lightest color */
+    color: #01161E; /* Darkest color */
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #EFF6E0; /* Lightest color */
+    color: #01161E; /* Darkest color */
+}
+
+neuralNetwork {
+    margin-bottom: 20px;
+}
+
+.place-image {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.slider {
+    width: 200px;
+    margin: 0 10px;
+}
+
+.cookie-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Additional styles for educational content */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+

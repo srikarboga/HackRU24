@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Cookie.css'; // Importing the CSS file
 import dogTreatImage from './img/dogtreat.png'; // Importing the image
 
 function Cookie() {
@@ -8,9 +7,6 @@ function Cookie() {
     const shoot = () => {
         setEpochs(epochs + 1); // Updating the epochs state
     }
-    
-
-
     
     return (
         <div className="cookie-container">
@@ -21,7 +17,7 @@ function Cookie() {
                 onClick={shoot}
                 className="cookie-image" // Applying class for styling
             />
-            <p className="cookie-paragraph"> Epochs: {epochs}</p>
+            <p className="h1"> Epochs: {epochs}</p>
         </div>
     );
 }
