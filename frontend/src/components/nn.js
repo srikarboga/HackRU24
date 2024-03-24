@@ -26,7 +26,7 @@ function NeuralNetworkVisualization(){
     console.log("FROM NN:", sliderValue)
 
 
-    
+
     function neuralNetwork(n, min, max) {
         const randomArray = [];
         // Initialize input layer
@@ -37,7 +37,7 @@ function NeuralNetworkVisualization(){
             randomArray[0].push(randomInt);
         }
         // Hidden layers
-        for( let i = 1; i < 3; i++){
+        for( let i = 1; i < sliderValue; i++){
             randomArray.push([]);
             for (let j = 0; j < n; j++) {
                 const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;

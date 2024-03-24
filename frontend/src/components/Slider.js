@@ -14,7 +14,7 @@ const Sliders = ({ onValueChange }) => {
       <input
         type="range"
         min="0"
-        max="100"
+        max="4"
         value={value}
         onChange={handleSliderChange}
       />
