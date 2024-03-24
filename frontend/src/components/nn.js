@@ -65,9 +65,9 @@ function NeuralNetworkVisualization(){
         svg.selectAll("*").remove();
 
         
-        const neuronRadius = 20/sliderValue2;
+        const neuronRadius = 100/(sliderValue2*2.5);
         const layerSeparation = 100;
-        const neuronSeparation = 10;
+        const neuronSeparation = 50;
         const verticalSeparation = 600 / sliderValue2; // Vertical separation constant
         const buffer = 100;
 
@@ -106,18 +106,27 @@ function NeuralNetworkVisualization(){
     
     return (
         <div className='container'>
+            <div><header>Restless Learning</header></div>
+            
             <div className='row1'>
-                <div className='container'>
+                <div className='row3'>
+                    <h1>No. Hidden Layers</h1>
                     <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
                     <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
+                    <h1>No. Nodes</h1>
                 </div>
                 
                 <svg id="neuralNetwork" width="800" height="800"></svg>
-                <img
-                    src={dogTreatImage}
-                    alt="Dog Treat"
-                    className="place-image" // Applying class for styling
-                />
+                <div>
+                    <h1>Accuracy</h1>
+                    <img
+                        src={dogTreatImage}
+                        alt="Dog Treat"
+                        className="place-image" // Applying class for styling
+                    />
+                    <h1> Target</h1>
+                </div>
+                
             </div>
             <div className='row2'>
                 
