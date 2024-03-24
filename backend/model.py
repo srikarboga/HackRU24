@@ -32,31 +32,31 @@ def train(model, optimizer, criterion, batch_size, train_loader, val_loader, epo
             optimizer.step()
         Loss.append(loss.item())
         correct = 0
+        total = 0
         for images, labels in val_loader:
                 outputs = model(images.view(-1, 28*28))
                 _, predicted = torch.max(outputs.data, 1)
                 correct += (predicted == labels).sum()
-        accuracy = 100 * (correct.item()) / len(val_data)
+                total += batch_size
+        accuracy = 100*(correct.item()) / (total)
         Acc.append(accuracy)
         Acc.append(accuracy)
         if epoch % 10 == 0:
                 print('Epoch: {}. Loss: {}. Accuracy: {}'.format(epoch, loss.item(), accuracy))
+    return Loss, Acc
         
 
 if __name__ == "__main__":
     model = Net(1,10)
-
-    train_data = datasets.MNIST('data', train=True, download=True, transform=transforms.ToTensor())
+    train_data = datasets.MNIST('./data', train=True, download=False, transform=transforms.ToTensor())
     train_data = list(train_data)[:4000]
     train_data, val_data = train_data[:3500], train_data[3500:]
-
 
     optimizer = torch.optim.SGD(model.parameters(), lr = 0.001)
     criterion = torch.nn.CrossEntropyLoss()
     batch_size = 16
     epochs = 50
-    train_loader = DataLoader(dataset = train_data, batch_size = batch_size)
-    val_loader = DataLoader(dataset = val_data, batch_size = batch_size)
-
+    train_loader = DataLoader(dataset = train_data, batch_size = batch_size, shuffle = True)
+    val_loader = DataLoader(dataset = val_data, batch_size = batch_size, shuffle = True)
 
     train(model, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
