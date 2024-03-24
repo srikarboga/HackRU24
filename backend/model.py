@@ -40,7 +40,6 @@ def train(model, optimizer, criterion, batch_size, train_loader, val_loader, epo
                 total += batch_size
         accuracy = 100*(correct.item()) / (total)
         Acc.append(accuracy)
-        Acc.append(accuracy)
         if epoch % 10 == 0:
                 print('Epoch: {}. Loss: {}. Accuracy: {}'.format(epoch, loss.item(), accuracy))
     return Loss, Acc

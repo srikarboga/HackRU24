@@ -31,7 +31,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#Global Params and vairables
 models = {}
+train_data = datasets.MNIST('./data', train=True, download=False, transform=transforms.ToTensor())
+train_data = list(train_data)[:4000]
+train_data, val_data = train_data[:3500], train_data[3500:]
+
+
+
+criterion = torch.nn.CrossEntropyLoss()
+batch_size = 16
+epochs = 1
+train_loader = DataLoader(dataset = train_data, batch_size = batch_size)
+val_loader = DataLoader(dataset = val_data, batch_size = batch_size)
+idx = torch.randint(3500, (1,)).item()
+image, label = train_data[idx]
+im = np.array(image.squeeze())
+norm = np.linalg.norm(im)
+im = im/norm
+cm_hot = mpl.colormaps['hot']
+im = cm_hot(im)
+im = np.uint8(im * 255)
+im = Image.fromarray(im)
+im = im.resize((560,560), resample = Image.Resampling.NEAREST)
+im.save("../frontend/src/components/img/dogtreat.png")
+
 #api = FastAPI()
 # FastAPI route to handle other API endpoints
 @app.get("/api")
@@ -39,44 +63,31 @@ def read_root():
     return {"message": "api works!"}
 
 @app.get("/api/newmodel")
-async def new_model():
+async def new_model(layers: int = 1, size: int = 10):
     user_id = str(uuid4())
-    testModel = model.Net(1, 10)
-    train_data = datasets.MNIST('./data', train=True, download=False, transform=transforms.ToTensor())
-    train_data = list(train_data)[:4000]
-    train_data, val_data = train_data[:3500], train_data[3500:]
-    testlayers = str(testModel.layers)
+    testModel = model.Net(layers, size)
     models[user_id] = testModel
     optimizer = torch.optim.SGD(testModel.parameters(), lr = 0.001)
-    criterion = torch.nn.CrossEntropyLoss()
-    batch_size = 16
-    epochs = 1
-    train_loader = DataLoader(dataset = train_data, batch_size = batch_size)
-    val_loader = DataLoader(dataset = val_data, batch_size = batch_size)
+    #testlayers = str(testModel.layers)
+    #TRAINING
     loss,acc = train(testModel, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
-    print(loss, acc)
-    idx = torch.randint(3500, (1,)).item()
-    image, label = train_data[idx]
-    im = np.array(image.squeeze())
-    norm = np.linalg.norm(im)
-    im = im/norm
-    cm_hot = mpl.colormaps['hot']
-    im = cm_hot(im)
-    im = np.uint8(im * 255)
-    im = Image.fromarray(im)
-    im = im.resize((560,560), resample = Image.Resampling.NEAREST)
-    im.save("../frontend/src/components/img/dogtreat.png")
+
+    #print(loss, acc)
+    
     # figure = plt.figure(figsize=(8, 8))
     # plt.imshow(image.squeeze())
     # plt.show()
     # print(label)
 
     # Send the user_id to the client-side JavaScript
-    return {"user_id": user_id, "model":testlayers,}
+    return {"user_id": user_id, "Accuracy" : acc, "Loss" : loss, "label":label}
 
-@app.get("/api/train")
-async def next_iter():
-    pass
+@app.get("/api/train/{uuid}")
+async def next_iter(uuid: str):
+    testModel = models[uuid]
+    optimizer = torch.optim.SGD(testModel.parameters(), lr = 0.001)
+    loss, acc = train(testModel, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
+    return {"Accuracy": acc, "Loss": loss}
 
 # Mount the built React app as a static directory
 #app.mount("/", StaticFiles(directory="../frontend/build", html=True), name="static")

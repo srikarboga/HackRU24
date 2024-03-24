@@ -41,6 +41,7 @@ body {
     height: 75vh;
     background-color: #EFF6E0; /* Lightest color */
     color: #01161E; /* Darkest color */
+    align: left;
 }
 
 neuralNetwork {
@@ -49,9 +50,10 @@ neuralNetwork {
 }
 
 .place-image {
-    width: 100px;
+    width: 200px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px
 }
 
 .slider-container {
@@ -60,6 +62,10 @@ neuralNetwork {
     justify-content: center;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.text{
+    text-align: center;
 }
 
 .slider {

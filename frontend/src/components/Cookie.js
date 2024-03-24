@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
-import button from './img/logo192.png'; // Importing the image
+import React, { useState , useEffect} from 'react';
+import button from './img/brain.png'; // Importing the image
+import { fetchTrainData } from '../user.js';
+//import { UserDataContext } from '../usercontext.js';
 
-function Cookie() {
+function Cookie(props) {
     const [epochs, setEpochs] = useState(0); // Using useState hook to maintain state
+    //const { userData, setUserData } = useContext(UserDataContext);
+    const{userData, setUserData, setAcc, setLoss} = props
+
+    useEffect(() => {
+        setEpochs(0)
+    }, [userData]);
+
+    useEffect(() => {
+        fetchTrainData(userData)
+            .then(data => {
+                setLoss(data.Loss);
+                setAcc(Number(data.Accuracy).toFixed(2));
+                console.log("running")
+            })
+            .catch(error => {
+                // Handle error if needed
+            });
+    }, [epochs]);
+
+
+
 
     const shoot = () => {
         setEpochs(epochs + 1); // Updating the epochs state

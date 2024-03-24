@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './nn.css'; // Importing the CSS file
 import * as d3 from 'd3';
 import Sliders from './Slider';
 import dogTreatImage from './img/dogtreat.png';
 import Cookie from './Cookie';
+import { fetchUserData } from '../user.js';
+//import { UserDataContext } from '../usercontext.js';
 
 function NeuralNetworkVisualization(){
     
-
+    
     //useEffect(() => {
         // Example data
         /*const neuralNetwork = {
@@ -18,18 +20,41 @@ function NeuralNetworkVisualization(){
             
         };
         */
-
+    const [userData, setUserData] = useState(null);
+    //const [uuid, setuuid] = useState(null);
+    //const { userData, setUserData } = useContext(UserDataContext);
+    const [acc, setAcc] = useState(null);
+    const [loss, setLoss] = useState(null);
+    const [label, setLabel] = useState(null);
     const [sliderValue, setSliderValue] = useState(2);
+    const [sliderValue2, setSliderValue2] = useState(5);
+    useEffect(() => {
+        fetchUserData(sliderValue, sliderValue2)
+            .then(data => {
+                //console.log("haha", user_id);
+                setUserData(data.user_id);
+                setAcc(Number(data.Accuracy).toFixed(2));
+                //console.log(data.Accuracy)
+                setLoss(data.Loss);
+                setLabel(data.label);
+            })
+            .catch(error => {
+                // Handle error if needed
+            });
+    }, [sliderValue, sliderValue2]);
+
+    
     const [min_val, setminval] = useState(1);
     const [max_val, setmaxval] = useState(5);
     const [min_val2, setminval2] = useState(1);
     const [max_val2, setmaxval2] = useState(14);
+    //setAcc(Number(acc).toFixed(2))
 
     const handleValueChange = (newValue) => {
         setSliderValue(newValue);
     };
 
-    const [sliderValue2, setSliderValue2] = useState(5);
+    
 
     const handleValueChange2 = (newValue2) => {
         setSliderValue2(newValue2);
@@ -113,15 +138,13 @@ function NeuralNetworkVisualization(){
         });
     }, [sliderValue, sliderValue2]);
     
-    
-    
     return (
         <div className='container'>
             <div><header>Restless Learning</header></div>
             
             <div className='row1'>
                 <div className='row3'>
-                    <p>The first layer is a 784 pixel image. <br /> Here we have displayed the first layer <br />with fewer nodes for visualization purposes.</p>
+                    <p>The first layer had 784 neurons, because we <br/>have 784 pixels in our image.  Here we've <br />displayed the first layer with fewer nodes<br /> for visualization purposes.</p>
                     <h1>No. Hidden Layers</h1>
                     <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
                     <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
@@ -130,19 +153,19 @@ function NeuralNetworkVisualization(){
                 
                 <svg id="neuralNetwork" width="800" height="800"></svg>
                 <div>
-                    <h1>Accuracy</h1>
+                    <h1 className="text">Accuracy: {acc}%</h1>
                     <img
                         src={dogTreatImage}
                         alt="Dog Treat"
                         className="place-image" // Applying class for styling
                     />
-                    <h1> Target</h1>
+                    <h1 className="text"> Target: {label}</h1>
                 </div>
                 
             </div>
             <div className='row2'>
                 
-                <Cookie />
+                <Cookie userData={userData} setUserData={setUserData} setAcc={setAcc} setLoss={setLoss}/>
             </div>
         </div>
     );

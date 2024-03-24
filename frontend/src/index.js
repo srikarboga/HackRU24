@@ -4,25 +4,18 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import NeuralNetworkVisualization from './components/nn';
-import { fetchUserData } from './user.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-fetchUserData()
-  .then(user_id => {
-    console.log("haha", user_id);
-  })
-  .catch(error => {
-    // Handle error if needed
-  });
 
 function Application(){
   return(
   
   <div class="wrapper">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap"></link>
-    <NeuralNetworkVisualization/>
+    <NeuralNetworkVisualization />
   </div>
   )
 }
