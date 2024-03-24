@@ -91,9 +91,9 @@ function NeuralNetworkVisualization(){
         // Clear previous SVG elements
         svg.selectAll("*").remove();
 
-        const height = 600;
-        const width = 760;
-        const offset = 20;
+        const height = 400;
+        const width = 500;
+        const offset = 80;
         const layers = neuralNetwork(sliderValue2, 1, 2);
         const neuronRadius = 100/(sliderValue2*2.5);
         var layerSeparation = width/(layers.length+1) + offset;
