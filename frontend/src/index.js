@@ -19,7 +19,9 @@ fetchUserData()
 
 function Application(){
   return(
+  
   <div class="wrapper">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap"></link>
     <NeuralNetworkVisualization/>
   </div>
   )
