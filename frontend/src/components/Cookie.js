@@ -6,22 +6,25 @@ import { fetchTrainData } from '../user.js';
 function Cookie(props) {
     const [epochs, setEpochs] = useState(0); // Using useState hook to maintain state
     //const { userData, setUserData } = useContext(UserDataContext);
-    const{userData, setUserData, setAcc, setLoss} = props
+    const{userData, setUserData, setAcc, setLoss, setPredicted} = props
 
     useEffect(() => {
         setEpochs(0)
     }, [userData]);
 
     useEffect(() => {
-        fetchTrainData(userData)
+        if(epochs){
+            fetchTrainData(userData)
             .then(data => {
                 setLoss(data.Loss);
                 setAcc(Number(data.Accuracy).toFixed(2));
+                setPredicted(data.predicted);
                 console.log("running")
             })
             .catch(error => {
                 // Handle error if needed
             });
+        }
     }, [epochs]);
 
 

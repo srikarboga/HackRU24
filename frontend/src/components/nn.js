@@ -26,6 +26,7 @@ function NeuralNetworkVisualization(){
     const [acc, setAcc] = useState(null);
     const [loss, setLoss] = useState(null);
     const [label, setLabel] = useState(null);
+    const [predicted, setPredicted] = useState(null);
     const [sliderValue, setSliderValue] = useState(2);
     const [sliderValue2, setSliderValue2] = useState(5);
     useEffect(() => {
@@ -37,6 +38,7 @@ function NeuralNetworkVisualization(){
                 //console.log(data.Accuracy)
                 setLoss(data.Loss);
                 setLabel(data.label);
+                setPredicted(data.predicted);
             })
             .catch(error => {
                 // Handle error if needed
@@ -144,11 +146,11 @@ function NeuralNetworkVisualization(){
             
             <div className='row1'>
                 <div className='row3'>
-                    <p>The first layer had 784 neurons, because we <br/>have 784 pixels in our image.  Here we've <br />displayed the first layer with fewer nodes<br /> for visualization purposes.</p>
-                    <h1>No. Hidden Layers</h1>
+                    <p>The first layer has 784 neurons, because we <br/>have 784 pixels in our image. But here we've <br />displayed fewer input neurons for visualization<br /> purposes.</p>
+                    <h1>No. Hidden Layers: {sliderValue-1}</h1>
                     <Sliders initialValue={sliderValue} onValueChange={handleValueChange} minval={min_val} maxval={max_val}/>
                     <Sliders initialValue={sliderValue2} onValueChange={handleValueChange2} minval={min_val2} maxval={max_val2}/>
-                    <h1>No. Nodes</h1>
+                    <h1>No. Nodes per layer: {sliderValue2}</h1>
                 </div>
                 
                 <svg id="neuralNetwork" width="800" height="800"></svg>
@@ -159,13 +161,14 @@ function NeuralNetworkVisualization(){
                         alt="Dog Treat"
                         className="place-image" // Applying class for styling
                     />
-                    <h1 className="text"> Target: {label}</h1>
+                    <h1 className="text"> Correct output: {label}</h1>
+                    <h1 className="text"> Predicted output: {predicted}</h1>
                 </div>
                 
             </div>
             <div className='row2'>
                 
-                <Cookie userData={userData} setUserData={setUserData} setAcc={setAcc} setLoss={setLoss}/>
+                <Cookie userData={userData} setUserData={setUserData} setAcc={setAcc} setLoss={setLoss} setPredicted={setPredicted}/>
             </div>
         </div>
     );

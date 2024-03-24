@@ -80,14 +80,18 @@ async def new_model(layers: int = 1, size: int = 10):
     # print(label)
 
     # Send the user_id to the client-side JavaScript
-    return {"user_id": user_id, "Accuracy" : acc, "Loss" : loss, "label":label}
+    output = torch.argmax(testModel(image.view(-1, 28*28))).item()
+    print(output)
+    return {"user_id": user_id, "Accuracy" : acc, "Loss" : loss, "label":label, "predicted": output}
 
 @app.get("/api/train/{uuid}")
 async def next_iter(uuid: str):
     testModel = models[uuid]
     optimizer = torch.optim.SGD(testModel.parameters(), lr = 0.001)
     loss, acc = train(testModel, optimizer, criterion, batch_size, train_loader, val_loader, epochs)
-    return {"Accuracy": acc, "Loss": loss}
+    output = torch.argmax(testModel(image.view(-1, 28*28))).item()
+    print(output)
+    return {"Accuracy": acc, "Loss": loss, "predicted": output}
 
 # Mount the built React app as a static directory
 #app.mount("/", StaticFiles(directory="../frontend/build", html=True), name="static")

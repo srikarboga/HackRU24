@@ -13,6 +13,7 @@ const Sliders = ({initialValue, onValueChange, minval, maxval }) => {
   return (
     <div className='slider-container'>
       <input
+        className = "slider"
         type="range"
         min={minval}
         max={maxval}
