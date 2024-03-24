@@ -95,7 +95,7 @@ function NeuralNetworkVisualization(){
         const width = 400;
         const offset = 80;
         const layers = neuralNetwork(sliderValue2, 1, 2);
-        const neuronRadius = 100/(sliderValue2*2.5);
+        const neuronRadius = 10;
         var layerSeparation = width/(layers.length+1) + offset;
         //const neuronSeparation = 20;
         var verticalSeparation = height / sliderValue2; // Vertical separation constant
