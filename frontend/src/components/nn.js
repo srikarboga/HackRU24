@@ -92,7 +92,7 @@ function NeuralNetworkVisualization(){
         svg.selectAll("*").remove();
 
         const height = 400;
-        const width = 500;
+        const width = 400;
         const offset = 80;
         const layers = neuralNetwork(sliderValue2, 1, 2);
         const neuronRadius = 100/(sliderValue2*2.5);
