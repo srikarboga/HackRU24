@@ -1,6 +1,6 @@
 # HackRU24
 
-# 🎉Rutgers Hackathon 2024 Winner in the Education Track
+## 🎉Rutgers Hackathon 2024 Winner in the Education Track🎉
 
 # Build instructions:
 
