@@ -1,20 +1,25 @@
-# HackRU24
+# HackRU24 App - RESTLESS LEARNING
+
+## 🎉Rutgers Hackathon 2024 Winner in the Education Track🎉
 
 # Build instructions:
 
-clone this repository  
+Clone this repository  
 
-then move to the frontend directory   
+Move to the frontend directory   
 ```cd ./frontend```  
-install npm dependecies  
+Install npm dependecies  
 ``` npm install ```  
-move to backend directory  
+Move to backend directory  
 ```cd ../backend```  
-install python dependencies  
+Install python dependencies  
 ``` pip install -r requirements.txt ```  
-run backend server  
+Run backend server  
 ```uvicorn backend:app --reload```  
-run frontend development server  
+
+Then in a new terminal open the frontend directory
+
+Run frontend development server  
 ```npm start```  
 Finally, open http://localhost:3000 in a browser of your choice to interact with the website.  
 
@@ -29,4 +34,4 @@ After each press of the button at the center the model, the model calls the back
 
 There are also some helpful tips to build intuition for how neural networks learn that show up on the bottom left side of the screen after a certain number of epochs.  
 
-The goal of this is to let students build intuition for how neural networks work.  
+The goal of this is to let students build intuition for how neural networks work. 
