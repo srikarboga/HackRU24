@@ -2,19 +2,22 @@
 
 # Build instructions:
 
-clone this repository  
+Clone this repository  
 
-then move to the frontend directory   
+Move to the frontend directory   
 ```cd ./frontend```  
-install npm dependecies  
+Install npm dependecies  
 ``` npm install ```  
-move to backend directory  
+Move to backend directory  
 ```cd ../backend```  
-install python dependencies  
+Install python dependencies  
 ``` pip install -r requirements.txt ```  
-run backend server  
+Run backend server  
 ```uvicorn backend:app --reload```  
-run frontend development server  
+
+Then in a new terminal open the frontend directory
+
+Run frontend development server  
 ```npm start```  
 Finally, open http://localhost:3000 in a browser of your choice to interact with the website.  
 
