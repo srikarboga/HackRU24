@@ -11,7 +11,7 @@ class Net(nn.Module):
         super().__init__()
         self.layers = [nn.Linear(input_size, hidden_size)]
         for _ in range(hidden - 1):
-            self.layers += [nn.Linear(hidden_size, hidden_size)]
+            self.layers += [nn.ReLU(), nn.Linear(hidden_size, hidden_size)]
         self.layers.append(nn.Linear(hidden_size, output_size))
         self.model = nn.Sequential(*self.layers)
     
