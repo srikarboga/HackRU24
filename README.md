@@ -1,4 +1,4 @@
-# HackRU24
+# HackRU24 App - RESTLESS LEARNING
 
 ## 🎉Rutgers Hackathon 2024 Winner in the Education Track🎉
 
