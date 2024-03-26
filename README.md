@@ -1,8 +1,11 @@
 # HackRU24 App - RESTLESS LEARNING
 
-## 🎉Rutgers Hackathon 2024 Winner in the Education Track🎉
+##🎉Rutgers Hackathon 2024 Winner in the Education Track🎉  
+
+This app was built in 24hrs for the Rutgers Hackathon event. It is intended to help students visualize and play with neural networks and build intuition for how they can be trained.
 
 # Build instructions:
+Make sure python and npm are installed before proceeding.  
 
 Clone this repository  
 
