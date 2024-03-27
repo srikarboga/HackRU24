@@ -9,11 +9,15 @@ import matplotlib.pyplot as plt
 class Net(nn.Module):
     def __init__(self, hidden, hidden_size, input_size = 784, output_size = 10):
         super().__init__()
-        self.layers = [nn.Linear(input_size, hidden_size)]
-        for _ in range(hidden - 1):
-            self.layers += [nn.ReLU(), nn.Linear(hidden_size, hidden_size)]
-        self.layers.append(nn.Linear(hidden_size, output_size))
-        self.model = nn.Sequential(*self.layers)
+        if(hidden == 0):
+            self.layers = [nn.Linear(input_size, output_size)]
+            self.model = nn.Sequential(*self.layers)
+        else:
+            self.layers = [nn.Linear(input_size, hidden_size), nn.ReLU()]
+            for _ in range(hidden-1):
+                self.layers += [nn.Linear(hidden_size, hidden_size), nn.ReLU()]
+            self.layers.append(nn.Linear(hidden_size, output_size))
+            self.model = nn.Sequential(*self.layers)
     
     def forward(self, x):
         output = self.model(x)
@@ -47,6 +51,7 @@ def train(model, optimizer, criterion, batch_size, train_loader, val_loader, epo
 
 if __name__ == "__main__":
     model = Net(1,10)
+    #total_params = sum(p.numel() for p in model.parameters())
     # transform = transforms.Compose([
     #     transforms.ToTensor(),
     #     transforms.Normalize((0.1307,), (0.3081,)) # calculated mean and std 
