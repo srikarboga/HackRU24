@@ -67,6 +67,9 @@ async def new_model(layers: int = 1, size: int = 10):
     user_id = str(uuid4())
     #print("LAYERS: ", layers, size)
     testModel = model.Net(layers, size)
+    total_params = sum(p.numel() for p in testModel.parameters())
+    print(total_params)
+    print(testModel)
     models[user_id] = testModel
     optimizer = torch.optim.SGD(testModel.parameters(), lr = 0.001)
     #testlayers = str(testModel.layers)
