@@ -29,6 +29,8 @@ function NeuralNetworkVisualization(){
     const [predicted, setPredicted] = useState(null);
     const [sliderValue, setSliderValue] = useState(2);
     const [sliderValue2, setSliderValue2] = useState(5);
+    const [imageData, setImageData] = useState(null);
+
     useEffect(() => {
         fetchUserData(sliderValue, sliderValue2)
             .then(data => {
@@ -39,6 +41,7 @@ function NeuralNetworkVisualization(){
                 setLoss(data.Loss);
                 setLabel(data.label);
                 setPredicted(data.predicted);
+                setImageData(data.image);
             })
             .catch(error => {
                 // Handle error if needed
@@ -186,11 +189,13 @@ function NeuralNetworkVisualization(){
                 <svg id="neuralNetwork" width="800" height="600"></svg>
                 <div className= "Accuracy">
                     <h1 className="text">Accuracy: {acc}%</h1>
-                    <img
-                        src={dogTreatImage}
-                        alt="Dog Treat"
-                        className="place-image" // Applying class for styling
-                    />
+                    {imageData && (
+                        <img
+                            src={`data:image/png;base64,${imageData}`}
+                            alt="MNIST sample"
+                            className="place-image"
+                        />
+                    )}
                     <h1 className="text"> Correct output: {label}</h1>
                     <h1 className="text"> Predicted output: {predicted}</h1>
                 </div>

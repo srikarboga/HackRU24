@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
 from PIL import Image
+import io
+import base64
 
 app = FastAPI()
 
@@ -22,6 +24,7 @@ origins = [
     "http://localhost:3000",  # Your React development server
     # Add other allowed origins if needed
     #CHANGE THIS WHEN DEPLOYING
+    "*"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -54,7 +57,7 @@ im = cm_hot(im)
 im = np.uint8(im * 255)
 im = Image.fromarray(im)
 im = im.resize((560,560), resample = Image.Resampling.NEAREST)
-im.save("../frontend/src/components/img/dogtreat.png")
+#im.save("../frontend/src/components/img/dogtreat.png")
 
 #api = FastAPI()
 # FastAPI route to handle other API endpoints
@@ -82,11 +85,13 @@ async def new_model(layers: int = 1, size: int = 10):
     # plt.imshow(image.squeeze())
     # plt.show()
     # print(label)
-
+    buffered = io.BytesIO()
+    im.save(buffered, format="PNG")
+    img_base64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
     # Send the user_id to the client-side JavaScript
     output = torch.argmax(testModel(image.view(-1, 28*28))).item()
     print(output)
-    return {"user_id": user_id, "Accuracy" : acc, "Loss" : loss, "label":label, "predicted": output}
+    return {"user_id": user_id, "Accuracy" : acc, "Loss" : loss, "label":label, "predicted": output, "image": img_base64}
 
 @app.get("/api/train/{uuid}")
 async def next_iter(uuid: str):
